@@ -1,334 +1,284 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Меню на неделю</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Главное меню</title>
     <style>
-        .day {
-            border: 1px solid black;
-            margin: 20px;
-            padding: 10px;
-            display: inline-block;
-        }
+       li{
+        display: inline;
+        margin: 8px;
+       }
+      
+       .container{
+        display: flex;
+        align-items: center;
+       }
+     
+       .navbar{
+        display: flex;
+        align-items: center;
+       
+       }
+       .promotions{
+        display: flex;
+        align-items: center;
+       }
+    
+      @font-face {
+        font-family:"LongCang" ;
+        src: url("fonts/LongCang-Regular.ttf");
+        font-size: normal;
+        font-weight: normal;
+      }
 
-        .excluded-product {
+      @font-face {
+        font-family:"LexendPeta" ;
+        src: url("fonts/LexendPeta-Regular.ttf");
+        font-size: normal;
+        font-weight: normal;
+      }
+      p{
+        font-family: LexendPeta;
+      }
+      .con-search {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .error-message {
             color: red;
-            font-weight: bold;
+            margin-top: 8px;
         }
-        .menu-icon {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 999;
-}
-.dropdown-menu {
-            display: none;
-            position: fixed;
-            top: 40px;
-            right: 20px;
-            background-color: #fff;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            padding: 10px;
+        .container-img{
+          display: flex;
+          width: 1080px;
+          flex-direction: column;
         }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 10px;
-            text-decoration: none;
-            color: #333;
+        .top
+        {
+          display: flex;
+          margin: 10px;
+          align-items: center;
         }
-
-
-        label,
-        h1 {
-            font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+      
+       
+      
+        .img_1{
+          margin-right: 5px;
         }
-    </style>
-</head>
-
+        footer{
+          background-color: rgb(128, 48, 202);
+        }
+        .podval{
+          display: flex;
+        }
+        .contact{
+          display: flex;
+          flex-direction: column;
+        }
+        h6{
+          margin: 4px;
+        }
+      .subscription-form {
+      max-width: 300px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-align: center;
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+   
+      </style>
+       <title>Праздник в каждый дом</title>
 <body>
-    <h1>Меню на неделю:</h1>
-<div class="menu-icon" onclick="toggleMenu()">...</div>
- <div class="dropdown-menu" id="dropdownMenu">
-        <a href="#" onclick="openProfile()">Профиль</a>
-        <a href="#" onclick="openSettings()">Настройки</a>
+  <header>
+    <nav class="navbar">
+        <a href="index.html"  style="display: flex; align-items: center; width: 210px;" ><img src="logocompany/1.jpg", width="210px", height="210px"></a>
+        <ul class="container">
+            <li class="frst"><a href="#promotions">Акции</a></li>
+            <li class="scnd"><a href="#con-search">Поиск</a></li>
+            <li><a href="search.html">Управление бронированием</a></li>
+
+            
+         </ul>
+ </nav>
+  </header>
+<section class="company-info">
+  <!-- Информация о компании, девиз, отзывы -->
+  <h3>Чтобы воспользоваться услугами компании необходимо:</h3>
+  <p><strong>1. Выбрать даты праздника;</strong></p>
+  <p><strong>2. Выбрать количество участников;</strong></p>
+  <p><strong>3. Выбрать желаемую локацию для праздника, соответствующую условиям выше;</strong></p>
+  <p><strong>4. Зарезервировать конкретную зону на территории выбранной локации;</strong></p>
+  <p><strong>5. Определить перечень дополнительных услуг;</strong></p>
+  <p><strong>6. Оформить заказ.</strong></p>
+  <h1>«Праздник в каждый дом»</h1>
+  <h4>Предоставляем услуги организации детских праздников на нашей территории в очень интересных локациях.</h4>
+  <h4>Главная цель компании – сделать праздник незабываемым для детей и их родителей.</h4>
+  <h4>Клиенты компании «Праздник в каждый дом» имеют возможность забронировать одну из предоставленных локаций для органицации детского праздника.<br> Помимо предоставления аренды помещения, компания предоставляет широкий спектр услуг, таких как: питание, услуги аниматоров, услуги ведущего, детского такси и т.д.</h4>
+</section>
+  <section class="reviews">
+  <!--ОТЗЫВЫ-->
+  <h1>
+    Светлана
+  </h1>
+  <h4>Спасибо большое! Дети в бурных эмоция, аниматор супер, даже взрослые участвовали, как это было все классно, энергично, здорово!
+    Успехов вам больших!</h4>
+
+    <h1>Алена </h1>
+    <h4>Всё очень понравилось. 
+      Игры хорошие, аниматоры отличные, костюмы классные! Дети были восторге!!!</h4>
+  <h1>Наталия </h1>
+  <h4>Уже не первый раз заказываем праздник у вас, как всегда вы огромные специалисты и мастера своего дела! 
+    Отлично всё: от приёма заказа, до финала праздника. Удачи и до новых встреч!!</h4>
+</section>
+  
+  
+
+    <section class="search">
+      <!-- Форма поиска -->
+      <div class="con-search" id="con-search">
+        <h2>Поиск</h2>
+        <form id="searchForm">
+            <label for="region">Регион:</label>
+            <select id="region" name="region">
+    <option value="Алтайский край">Алтайский край</option>
+    <option value="Красноярский край">Красноярский край</option>
+</select>
+
+  
+            <label for="date">Дата:</label>
+            <input type="date" id="date" name="date">
+  
+            <label for="people">Количество людей:</label>
+            <input type="number" id="people" name="people" min="1">
+  
+            <button type="button" onclick="search()">Найти</button>
+  
+            <div id="errorMessage" class="error-message"></div>
+        </form>
     </div>
+    </section>
+   <section class="actions">
+        <!-- Блок с акциями -->
+        <div class="promotions" id="promotions">
+            <br>
+            <div class="container-img">
+                <div class="top">
+                    <div class="imgontxt1">
+                        <h2>Скидка до 60%. За заказ зоны (от 25 человек) в локации «Черная жемчужина»</h2>
+                        <img class="img_1" src="imgrom/promotion1.jpg" alt="1">
+                        <button onclick="toggleInfo('info1', 'img_1')">Показать/Скрыть полную информацию</button>
+                        <p id="info1" style="display: none;">Устали от городского шума, хотите провести праздник за городом в живописной локации? Заказывайте место в локации «Черная жемчужина». Здесь вас и ваших детей ждет настоящая пиратская шхуна с настоящими пиратами! Заказ от 25 до 30 человек: Скидка 40% на аренду при заказе в будний день. Заказ от 31 до 50 человек: Скидка 55% на аренду при заказе в будний день. Купон действует в будние дни при наличии свободных мест.</p>
+                    </div>
+                    <div class="imgontxt2">
+                        <h2>Скидка до 51%. Уютное место для организации праздников «Поляна сказок»</h2>
+                        <img class="img_2" src="imgrom/promotion2.jpg" alt="2" style="height:520px;">
+                        <button onclick="toggleInfo('info2', 'img_2')">Показать/Скрыть полную информацию</button>
+                        <p id="info2" style="display: none;">Локация «Поляна сказок» расположена в живописной загородной местности на берегу чистого озера. Купон действует на следующие виды услуг: Скидка 51% для аренды зоны в локации «Поляна сказок» при условии заказа услуг аниматоров. Обязательна предварительная запись по телефону. Преимущества заказа именно этой локации: безопасность, мало людей, защита от насекомых, обустроенный тематический лагерь.</p>
+                    </div>
+                    <div class="imgontxt3">
+                        <h2>Скидка до 25%. Закажи праздник "Под ключ"</h2>
+                        <img class="img_3" src="imgrom/promotion3.jpg" alt="3">
+                        <button onclick="toggleInfo('info3', 'img_3')">Показать/Скрыть полную информацию</button>
+                        <p id="info3" style="display: none;">При выборе локации для 15 человек и больше, а также при заказе всех дополнительных услуг можно очень неплохо сэкономить! Купон действует на следующие виды услуг: Скидка 25% для органицации комплексного праздника для группы от 25 человек. Скидка 10% для органицации комплексного праздника для группы от 15 человек. Обязательна предварительная запись по телефону.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  <section class="subscribe">
+    <!-- Форма для подписки на акции -->
+    <h1>Форма регистрации</h1>
+  <form class="subscription-form" id="subscriptionForm" onsubmit="event.preventDefault(); navigateToThankYouPage();">
+    <label for="email">Введите ваш email:</label><br>
+    <input type="email" id="email" name="email" placeholder="Введите ваш эмаил" required><br><br>
+    <button type="submit">Подписаться</button>
+  </form>
+    
+  </section>
+  <footer>
+    <!-- Подвал сайта -->
+    <div class="podval">
+      <div class="logo">
+        <img src="logocompany/2.jpeg" alt="logo2" style="width:228px;height:228px;">
+      </div>
+      <div class="contact" style="display:flex;">
+        <h3>Телефон <br> <a>+7(800)111-20-20</a></h3>
+        <h6>Home  <a href="#">http://xxxxxx</a></h6>
+        <h6>Login  <a href="#">http://xxxxxx/login</a></h6>
+        <h6>Sign up  <a href="#">http://xxxxxx/signup</a></h6>
+        <h6>Contact  <a href="#">http://xxxxxx/contact</a></h6>
+        <h6>News  <a href="#">http://xxxxxx/news</a></h6>
+        <h6>Return  <a href="#">http://xxxxxx/return</a></h6>
+        <h6>Feedback <a href="#">https://xxxxxx/feedback</a></h6>
+      </div>
+      <div class="navigation"></div>
+    </div>
+  </footer>
+  <script>
+    function search() {
+    var regionInput = document.getElementById('region').value;
+    var dateInput = document.getElementById('date');
+    var peopleInput = document.getElementById('people').value;
 
-    <label for="personCount">Количество персон: </label>
-    <select id="personCount">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-    </select>
-
-    <label for="mealCount">Приемов пищи в день: </label>
-    <select id="mealCount">
-        <option value="3">3</option>
-        <option value="5">5</option>
-    </select>
-
-    <label for="choseMenu">Выберите меню</label>
-    <select id="choseMenu">
-        <option value="Diet">Деетическое</option>
-        <option value="Regular">Обычное</option>
-    </select>
-
-    <button onclick="generateMenus()">Сгенерировать меню</button>
-
-    <label for="searchProduct">Поиск продукта: </label>
-    <input type="text" id="searchProduct">
-    <button onclick="searchProduct()">Найти продукт</button>
-
-    <div id="excludedProducts"></div>
-    <div id="menus"></div>
-
-    <script>
-        var daysOfWeek = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
-
-        var menus = {
-            "Diet": {
-                "breakfast": [
-                    { name: "Каша с фруктами", composition: "Овсянка, молоко, фрукты" },
-                    { name: "Творожные сырники", composition: "Творог, яичный белок, подсластитель" },
-                    { name: "Ленивая овсянка", composition: "Овсяные хлопья, йогурт, банан, мед" },
-                    { name: "Овсяноблин", composition: "Овсяные хлопья, молоко, яйцо, начинка" }
-                ],
-                "lunch": [
-                    { name: "Салат с тунцом", composition: "Тунец, фасоль, помидоры, оливковое масло" },
-                    { name: "Куриный рулет", composition: "Куриное филе, мандарины, грецкие орехи" },
-                    { name: "Уха из сибаса", composition: "Сибас, овощи, специи" },
-                    { name: "Томатный суп", composition: "Морепродукты, овощи, специи" }
-                ],
-                "dinner": [
-                    { name: "Рыба с овощами", composition: "Лосось, брокколи, морковь" },
-                    { name: "Курица с картофелем", composition: "Куриное филе, картофель, специи" },
-                    { name: "Спагетти с чесноком", composition: "Спагетти, чеснок, масло" },
-                    { name: "Дорада в духовке", composition: "Дорада, лимон, базилик, масло" }
-                ],
-                "snack": [
-                    { name: "Фрукты", composition: "Яблоко, банан, груша" },
-                    { name: "Орехи", composition: "Грецкие орехи, миндаль" },
-                    { name: "Йогурт", composition: "Натуральный йогурт, мед, орехи" },
-                    { name: "Зерновые батончики", composition: "Злаки, мед, орехи" }
-                ]
-            },
-            "Regular": {
-                "breakfast": [
-                    { name: "Омлет", composition: "Яйца, молоко, соль, перец" },
-                    { name: "Гречневая каша", composition: "Гречка, вода, соль" },
-                    { name: "Тосты", composition: "Хлеб, масло" },
-                    { name: "Фрукты", composition: "Яблоко, банан, апельсин" }
-                ],
-                "lunch": [
-                    { name: "Салат", composition: "Помидор, огурец, салат, оливковое масло" },
-                    { name: "Паста", composition: "Макароны, томатный соус, сыр" },
-                    { name: "Сэндвич", composition: "Хлеб, ветчина, сыр, майонез" },
-                    { name: "Суп", composition: "Куриный бульон, лапша, овощи" }
-                ],
-                "dinner": [
-                    { name: "Рыба с овощами", composition: "Лосось, брокколи, морковь" },
-                    { name: "Курица с картофелем", composition: "Куринное филе, картофель, специи" },
-                    { name: "Пицца", composition: "Тесто, томатный соус, сыр, грибы, колбаса" },
-                    { name: "Суши", composition: "Рис, лосось, нори, огурец, соевый соус" }
-                ],
-                "snack": [
-                    { name: "Фрукты", composition: "Яблоко, банан, груша" },
-                    { name: "Орехи", composition: "Грецкие орехи, миндаль" },
-                    { name: "Йогурт", composition: "Натуральный йогурт, мед, орехи" },
-                    { name: "Зерновые батончики", composition: "Злаки, мед, орехи" }
-                ]
-            }
-        };
-
-        var excludedProducts = [];
-
-        function getRandomMeal(menuArray, usedMeals) {
-            var availableMeals = menuArray.filter(function (meal) {
-                return !usedMeals[meal.name] || usedMeals[meal.name] < 2;
-            });
-
-            if (availableMeals.length === 0) {
-                return "Исчерпаны варианты";
-            }
-
-            var randomIndex = Math.floor(Math.random() * availableMeals.length);
-            var selectedMeal = availableMeals[randomIndex];
-
-            usedMeals[selectedMeal.name] = (usedMeals[selectedMeal.name] || 0) + 1;
-
-            return selectedMeal;
-        }
-
-        function showComposition(composition) {
-            alert("Состав: " + composition);
-        }
-
-        function addToExclusion(product) {
-            if (excludedProducts.indexOf(product) === -1) {
-                excludedProducts.push(product);
-                updateExcludedProducts();
-            }
-        }
-
-        function removeFromExclusion(product) {
-            var index = excludedProducts.indexOf(product);
-            if (index !== -1) {
-                excludedProducts.splice(index, 1);
-                updateExcludedProducts();
-            }
-        }
-
-        function updateExcludedProducts() {
-            var excludedProductsContainer = document.getElementById("excludedProducts");
-            excludedProductsContainer.innerHTML = "<h3>Исключенные продукты:</h3>";
-
-            if (excludedProducts.length === 0) {
-                excludedProductsContainer.innerHTML += "Нет исключенных продуктов.";
-            } else {
-                excludedProducts.forEach(function (product) {
-                    var productBlock = document.createElement("div");
-                    productBlock.className = "excluded-product";
-                    productBlock.innerHTML = product + ' <span style="cursor: pointer;" onclick="removeFromExclusion(\'' + product + '\')">✖</span>';
-                    excludedProductsContainer.appendChild(productBlock);
-                });
-            }
-        }
-
-       function searchProduct() {
-    var searchTerm = document.getElementById("searchProduct").value.trim().toLowerCase();
-
-    // Проверка на пустое значение
-    if (searchTerm === "") {
-        alert("Введите название продукта для поиска.");
-        return;
-    }
-
-    // Добавляем продукт в исключения
-    addToExclusion(searchTerm);
-
-    var foundProducts = [];
-
-    // Собираем блюда, содержащие искомый продукт
-    var affectedDishes = [];
-    for (var menuType in menus) {
-        for (var mealType in menus[menuType]) {
-            menus[menuType][mealType].forEach(function (meal) {
-                if (meal.composition.toLowerCase().includes(searchTerm) && foundProducts.indexOf(meal.name) === -1) {
-                    foundProducts.push(meal.name);
-                    affectedDishes.push({
-                        menuType: menuType,
-                        mealType: mealType,
-                        meal: meal
-                    });
-                }
-            });
-        }
-    }
-
-    if (foundProducts.length > 0) {
-        // Заменяем все затронутые блюда случайными альтернативами
-        affectedDishes.forEach(function (affectedDish) {
-            var availableMeals = menus[affectedDish.menuType][affectedDish.mealType].filter(function (meal) {
-                return meal.name !== affectedDish.meal.name;
-            });
-
-            // Проверяем, что есть более 2-х блюд для замены
-            if (availableMeals.length < 3) {
-                alert("Невозможно добавить блюдо в исключение, так как останется меньше 2 вариантов.");
-                return;
-            }
-
-            var alternativeDish = getRandomMeal(availableMeals, {});
-            var index = menus[affectedDish.menuType][affectedDish.mealType].indexOf(affectedDish.meal);
-
-            while (index !== -1) {
-                menus[affectedDish.menuType][affectedDish.mealType].splice(index, 1, alternativeDish);
-                index = menus[affectedDish.menuType][affectedDish.mealType].indexOf(affectedDish.meal);
-            }
-        });
-
-        alert("Блюда с продуктом '" + searchTerm + "' были заменены. Новые блюда сгенерированы.");
-        generateMenus(); // Перегенерируем меню для отображения обновленных блюд
+    if (!regionInput || !dateInput.value || !peopleInput) {
+        document.getElementById('errorMessage').innerText = 'Заполните все поля.';
+    } else if (peopleInput > 50) {
+        document.getElementById('errorMessage').innerText = 'Количество людей не должно превышать 50.';
     } else {
-        alert("Продукт не найден в текущем меню. Он был добавлен в исключения.");
+        var currentDate = new Date().toISOString().split('T')[0];
+        if (dateInput.value < currentDate) {
+            document.getElementById('errorMessage').innerText = 'Выберите будущую дату.';
+            return;
+        }
+
+        document.getElementById('errorMessage').innerText = '';
+
+        // Сохранение данных в localStorage 
+        localStorage.setItem('region', regionInput);
+        localStorage.setItem('date', dateInput.value);
+        localStorage.setItem('people', peopleInput);
+
+
+
+        window.location.href = 'search.html';
     }
 }
-        function generateMenus() {
-            var personCount = document.getElementById("personCount").value;
-            var mealCount = parseInt(document.getElementById("mealCount").value);
-            var menusContainer = document.getElementById("menus");
-            var choseMenu = document.getElementById("choseMenu").value;
-            menusContainer.innerHTML = "";
 
-            var includeSnack = mealCount === 5;
-            var menu = menus[choseMenu];
 
-            for (var i = 0; i < daysOfWeek.length; i++) {
-                var day = daysOfWeek[i];
-                var dayMenu = document.createElement("div");
-                dayMenu.className = "day";
-                dayMenu.innerHTML = "<h2>" + day + "</h2>";
 
-                var usedMeals = {
-                    breakfast: {},
-                    lunch: {},
-                    dinner: {}
-                };
+    function navigateToThankYouPage() {
+      const email = document.getElementById('email').value;
+      // Сохранение email...
+      // Перенаправление на страницу благодарности
+      window.location.href = '#';  // Замените 'thankyou.html' на путь к вашей странице благодарности
+    }
 
-                if (includeSnack) {
-                    usedMeals.snack = {};
-                }
-                var mealTypes = ["breakfast", "lunch", "dinner"];
-                if (includeSnack) mealTypes.push("snack");
+    //паказать инфу по акциям 
+     function toggleInfo(infoId, imgId) {
+            var infoElement = document.getElementById(infoId);
+            var imgElement = document.getElementsByClassName(imgId)[0];
 
-                // объект русских названий
-                var russianMealTypes = {
-                    "breakfast": "Завтрак",
-                    "lunch": "Обед",
-                    "dinner": "Ужин",
-                    "snack": "Полдник"
-                };
-
-for (var j = 0; j < mealTypes.length; j++) {
-    var mealType = mealTypes[j];
-
-    // Получит название из объекта
-    var russianMealType = russianMealTypes[mealType] || mealType;
-
-    var meal = getRandomMeal(menu[mealType], usedMeals[mealType]);
-    var mealBlock = document.createElement("p");
-    mealBlock.innerHTML = "<strong>" + russianMealType + ": </strong>" + meal.name + ' <a href="javascript:void(0);" onclick="showComposition(\'' + meal.composition + '\')">Показать состав</a>';
-    dayMenu.appendChild(mealBlock);
-}
-                menusContainer.appendChild(dayMenu);
+            if (infoElement.style.display === 'none' || infoElement.style.display === '') {
+                infoElement.style.display = 'block';
+                imgElement.style.marginRight = '5px'; //ориг стиль
+            } else {
+                infoElement.style.display = 'none';
+                imgElement.style.marginRight = '0'; // - отступ
             }
         }
-
-         function toggleMenu() {
-            var dropdownMenu = document.getElementById("dropdownMenu");
-            dropdownMenu.style.display = (dropdownMenu.style.display === "none" || dropdownMenu.style.display === "") ? "block" : "none";
-        }
-
-        function openProfile() {
-            alert("Открываем профиль");
-            toggleMenu(); // Скрыть меню после выбора
-        }
-
-        function openSettings() {
-            alert("Открываем настройки");
-            toggleMenu(); // Скрыть меню после выбора
-        }
-
-    </script>
+        
+</script>
 </body>
 </html>
