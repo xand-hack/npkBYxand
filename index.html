@@ -1,197 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Главное меню</title>
-    <style>
-       li{
-        display: inline;
-        margin: 8px;
-       }
-      
-       .container{
-        display: flex;
-        align-items: center;
-       }
-     
-       .navbar{
-        display: flex;
-        align-items: center;
-       
-       }
-       .promotions{
-        display: flex;
-        align-items: center;
-       }
-    
-      @font-face {
-        font-family:"LongCang" ;
-        src: url("fonts/LongCang-Regular.ttf");
-        font-size: normal;
-        font-weight: normal;
-      }
 
-      @font-face {
-        font-family:"LexendPeta" ;
-        src: url("fonts/LexendPeta-Regular.ttf");
-        font-size: normal;
-        font-weight: normal;
-      }
-      p{
-        font-family: LexendPeta;
-      }
-      .con-search {
-            max-width: 400px;
+    <title>Праздник в каждый дом</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px 10px; /* Уменьшаем внутренний отступ шапки */
+}
+
+.logo img {
+    width: 100%;
+    max-width: 100px; /* Уменьшаем максимальную ширину логотипа */
+    height: auto;
+    border-radius: 8px;
+}
+
+        .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+        .container {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+.container li {
+    display: inline-block; /* Размещаем элементы в строку */
+    margin: 0 10px;
+}
+
+.container li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container li a:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.promotion button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.promotion button:hover {
+    background-color: #45a049;
+}
+        .company-info,
+        .company-description,
+        .reviews,
+        .search,
+        .actions,
+        .subscribe {
+            max-width: 1080px;
             margin: 20px auto;
             padding: 20px;
-            border: 1px solid #ccc;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'LongCang', sans-serif;
+            color: #4e4e4e;
+        }
+
+        .promotions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container-img {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .imgontxt1,
+        .imgontxt2,
+        .imgontxt3 {
+            margin-bottom: 20px;
+        }
+
+        
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .subscription-form {
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        .footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.podval {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 50%;
+}
+
+
+        .contact {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+        .contact a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact-links h6 {
+    margin: 0 10px 5px 0;
+    font-size: 14px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    color: #4CAF50;
+}
+
+        .step-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .step {
+            width: 40px;
+            height: 40px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background-color: #4CAF50;
+        }
+        .reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review-content {
+    flex: 2;
+    margin-left: 20px;
+}
+
+.review img {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px; /* Adjust the size as needed */
+    border-radius: 50%;
+}
+
+ .stars {
+        color: #FFD700; /* Yellow color code */
+    }
+
+ .actions {
+            text-align: center;
+        }
+
+        .promotions {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+       
+
+        .top {
+            position: relative;
+        }
+
+        .imgontxt {
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .img_1,
+        .img_2,
+        .img_3 {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .arrows button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+        }
+
+        .arrows button:hover {
+            background-color: #45a049;
+        }
+
+          .search {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .con-search h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        #searchForm {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #searchForm label {
+            margin: 0 10px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        #searchForm select,
+        #searchForm input[type="date"],
+        #searchForm input[type="number"] {
+            padding: 10px;
+            margin: 5px;
+            box-sizing: border-box;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #searchForm button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+        }
+
+        #searchForm button:hover {
+            background-color: #45a049;
+        }
+
         .error-message {
             color: red;
-            margin-top: 8px;
+            margin-top: 10px;
         }
-        .container-img{
-          display: flex;
-          width: 1080px;
-          flex-direction: column;
-        }
-        .top
-        {
-          display: flex;
-          margin: 10px;
-          align-items: center;
-        }
-      
-       
-      
-        .img_1{
-          margin-right: 5px;
-        }
-        footer{
-          background-color: rgb(128, 48, 202);
-        }
-        .podval{
-          display: flex;
-        }
-        .contact{
-          display: flex;
-          flex-direction: column;
-        }
-        h6{
-          margin: 4px;
-        }
-      .subscription-form {
-      max-width: 300px;
-      margin: 20px auto;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      text-align: center;
-    }
-    input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      box-sizing: border-box;
-    }
-   
-      </style>
-       <title>Праздник в каждый дом</title>
-<body>
-  <header>
-    <nav class="navbar">
-        <a href="index.html"  style="display: flex; align-items: center; width: 210px;" ><img src="logocompany/1.jpg", width="210px", height="210px"></a>
-        <ul class="container">
-            <li class="frst"><a href="#promotions">Акции</a></li>
-            <li class="scnd"><a href="#con-search">Поиск</a></li>
-            <li><a href="search.html">Управление бронированием</a></li>
 
-            
-         </ul>
- </nav>
-  </header>
-<section class="company-info">
-  <!-- Информация о компании, девиз, отзывы -->
-  <h3>Чтобы воспользоваться услугами компании необходимо:</h3>
-  <p><strong>1. Выбрать даты праздника;</strong></p>
-  <p><strong>2. Выбрать количество участников;</strong></p>
-  <p><strong>3. Выбрать желаемую локацию для праздника, соответствующую условиям выше;</strong></p>
-  <p><strong>4. Зарезервировать конкретную зону на территории выбранной локации;</strong></p>
-  <p><strong>5. Определить перечень дополнительных услуг;</strong></p>
-  <p><strong>6. Оформить заказ.</strong></p>
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/for logo/1.jpg" alt="logo">
+            </div>
+            <ul class="container">
+                <li class="frst"><a href="#promotions">Акции</a></li>
+                <li class="scnd"><a href="#con-search">Поиск</a></li>
+                <li><a href="search.html">Управление бронированием</a></li>
+
+
+            </ul>
+        </nav>
+    </header>
+  <section class="company-info">
+    <!-- Информация о компании, девиз, отзывы -->
+    <h3>Чтобы воспользоваться услугами компании необходимо:</h3>
+    <div class="step-container">
+        <div class="step">1</div>
+        <div class="step-line"></div>
+        <div class="step">2</div>
+        <div class="step-line"></div>
+        <div class="step">3</div>
+        <div class="step-line"></div>
+        <div class="step">4</div>
+        <div class="step-line"></div>
+        <div class="step">5</div>
+        <div class="step-line"></div>
+        <div class="step">6</div>
+    </div>
+    <p>1. Выбрать даты праздника;</p>
+    <p>2. Выбрать количество участников;</p>
+    <p>3. Выбрать желаемую локацию для праздника, соответствующую условиям выше;</p>
+    <p>4. Зарезервировать конкретную зону на территории выбранной локации;</p>
+    <p>5. Определить перечень дополнительных услуг;</p>
+    <p>6. Оформить заказ.</p>
+</section>
+
+
+<section class="company-description">
+  <!-- Текст о компании -->
   <h1>«Праздник в каждый дом»</h1>
   <h4>Предоставляем услуги организации детских праздников на нашей территории в очень интересных локациях.</h4>
   <h4>Главная цель компании – сделать праздник незабываемым для детей и их родителей.</h4>
-  <h4>Клиенты компании «Праздник в каждый дом» имеют возможность забронировать одну из предоставленных локаций для органицации детского праздника.<br> Помимо предоставления аренды помещения, компания предоставляет широкий спектр услуг, таких как: питание, услуги аниматоров, услуги ведущего, детского такси и т.д.</h4>
+  <h4>Клиенты компании «Праздник в каждый дом» имеют возможность забронировать одну из предоставленных локаций для организации детского праздника.<br> Помимо предоставления аренды помещения, компания предоставляет широкий спектр услуг, таких как: питание, услуги аниматоров, услуги ведущего, детского такси и т.д.</h4>
 </section>
-  <section class="reviews">
+
+
   <!--ОТЗЫВЫ-->
-  <h1>
-    Светлана
-  </h1>
-  <h4>Спасибо большое! Дети в бурных эмоция, аниматор супер, даже взрослые участвовали, как это было все классно, энергично, здорово!
-    Успехов вам больших!</h4>
-
-    <h1>Алена </h1>
-    <h4>Всё очень понравилось. 
-      Игры хорошие, аниматоры отличные, костюмы классные! Дети были восторге!!!</h4>
-  <h1>Наталия </h1>
-  <h4>Уже не первый раз заказываем праздник у вас, как всегда вы огромные специалисты и мастера своего дела! 
-    Отлично всё: от приёма заказа, до финала праздника. Удачи и до новых встреч!!</h4>
-</section>
-  
-  
-
-    <section class="search">
-      <!-- Форма поиска -->
-      <div class="con-search" id="con-search">
-        <h2>Поиск</h2>
-        <form id="searchForm">
-            <label for="region">Регион:</label>
-            <select id="region" name="region">
-    <option value="Алтайский край">Алтайский край</option>
-    <option value="Красноярский край">Красноярский край</option>
-</select>
-
-  
-            <label for="date">Дата:</label>
-            <input type="date" id="date" name="date">
-  
-            <label for="people">Количество людей:</label>
-            <input type="number" id="people" name="people" min="1">
-  
-            <button type="button" onclick="search()">Найти</button>
-  
-            <div id="errorMessage" class="error-message"></div>
-        </form>
+<!-- Ваш предыдущий код ... -->
+<section class="reviews">
+    <!-- ОТЗЫВЫ -->
+    <div class="review">
+        <div class="review-info">
+            <h2>Светлана</h2>
+            <div class="stars">★★★★★</div>
+            <img src="images/people/6.jpg" alt="Светлана">
+        </div>
+        <div class="review-content">
+            <p>Спасибо большое! Дети в бурных эмоция, аниматор супер, даже взрослые участвовали, как это было все классно, энергично, здорово! Успехов вам больших!</p>
+        </div>
     </div>
+
+    <div class="review">
+        <div class="review-info">
+            <h2>Алена</h2>
+            <div class="stars">★★★★★</div>
+            <img src="images/people/7.jpg" alt="Алена">
+        </div>
+        <div class="review-content">
+            <p>Всё очень понравилось. Игры хорошие, аниматоры отличные, костюмы классные! Дети были восторге!!!</p>
+        </div>
+    </div>
+    <div class="review">
+        <div class="review-info">
+            <h2>Алена</h2>
+            <div class="stars">★★★★★</div>
+            <img src="images/people/5.jpg" alt="Марина ">
+        </div>
+        <div class="review-content">
+            <p>ДР ребенка 3 года, аниматоры молодцы, все очень хорошо подготовили! 
+Крош отработал на 5, все дети в восторге! Шоу мыльных пузырей с погружением чудесное и волшебное! Детям хотелось немного больше контакта с пузырями!
+Ребят, только на счет подарка в конце шоу оговаривайте с родителями! Иногда шоколад маленьким детям дарить не стоит !
+
+</p>
+        </div>
+    </div>
+
+    <div class="review">
+        <div class="review-info">
+            <h2>Наталия</h2>
+            <div class="stars">★★★★★</div>
+            <img src="images/people/9.jpg" alt="Наталия">
+        </div>
+        <div class="review-content">
+            <p>Уже не первый раз заказываем праздник у вас, как всегда вы огромные специалисты и мастера своего дела! Отлично всё: от приёма заказа, до финала праздника. Удачи и до новых встреч!!</p>
+        </div>
+    </div>
+</section>
+
+<!-- Ваш предыдущий код ... -->
+
+  
+ <section class="search">
+        <!-- Форма поиска -->
+        <div class="con-search" id="con-search">
+            <h2>Поиск</h2>
+            <form id="searchForm">
+                <label for="region">Регион:</label>
+                <select id="region" name="region">
+                    <option value="Алтайский край">Алтайский край</option>
+                    <option value="Красноярский край">Красноярский край</option>
+                </select>
+
+                <label for="date">Дата:</label>
+                <input type="date" id="date" name="date">
+
+                <label for="people">Количество людей:</label>
+                <input type="number" id="people" name="people" min="1">
+
+                <button type="button" onclick="search()">Найти</button>
+
+                <div id="errorMessage" class="error-message"></div>
+            </form>
+        </div>
     </section>
-   <section class="actions">
+
+
+<section class="actions">
         <!-- Блок с акциями -->
         <div class="promotions" id="promotions">
-            <br>
             <div class="container-img">
                 <div class="top">
-                    <div class="imgontxt1">
+                    <div class="imgontxt promotion" data-index="1">
                         <h2>Скидка до 60%. За заказ зоны (от 25 человек) в локации «Черная жемчужина»</h2>
-                        <img class="img_1" src="imgrom/promotion1.jpg" alt="1">
+                        <img class="img_1" src="images/promotions/promotion1.jpg" alt="1">
                         <button onclick="toggleInfo('info1', 'img_1')">Показать/Скрыть полную информацию</button>
                         <p id="info1" style="display: none;">Устали от городского шума, хотите провести праздник за городом в живописной локации? Заказывайте место в локации «Черная жемчужина». Здесь вас и ваших детей ждет настоящая пиратская шхуна с настоящими пиратами! Заказ от 25 до 30 человек: Скидка 40% на аренду при заказе в будний день. Заказ от 31 до 50 человек: Скидка 55% на аренду при заказе в будний день. Купон действует в будние дни при наличии свободных мест.</p>
                     </div>
-                    <div class="imgontxt2">
+                    <div class="imgontxt promotion" data-index="2" style="display: none;">
                         <h2>Скидка до 51%. Уютное место для организации праздников «Поляна сказок»</h2>
-                        <img class="img_2" src="imgrom/promotion2.jpg" alt="2" style="height:520px;">
+                        <img class="img_2" src="images/promotions/promotion2.jpg" alt="2" style="height:520px;">
                         <button onclick="toggleInfo('info2', 'img_2')">Показать/Скрыть полную информацию</button>
                         <p id="info2" style="display: none;">Локация «Поляна сказок» расположена в живописной загородной местности на берегу чистого озера. Купон действует на следующие виды услуг: Скидка 51% для аренды зоны в локации «Поляна сказок» при условии заказа услуг аниматоров. Обязательна предварительная запись по телефону. Преимущества заказа именно этой локации: безопасность, мало людей, защита от насекомых, обустроенный тематический лагерь.</p>
                     </div>
-                    <div class="imgontxt3">
+                    <div class="imgontxt promotion" data-index="3" style="display: none;">
                         <h2>Скидка до 25%. Закажи праздник "Под ключ"</h2>
-                        <img class="img_3" src="imgrom/promotion3.jpg" alt="3">
+                        <img class="img_3" src="images/promotions/promotion3.jpg" alt="3">
                         <button onclick="toggleInfo('info3', 'img_3')">Показать/Скрыть полную информацию</button>
                         <p id="info3" style="display: none;">При выборе локации для 15 человек и больше, а также при заказе всех дополнительных услуг можно очень неплохо сэкономить! Купон действует на следующие виды услуг: Скидка 25% для органицации комплексного праздника для группы от 25 человек. Скидка 10% для органицации комплексного праздника для группы от 15 человек. Обязательна предварительная запись по телефону.</p>
+                    </div>
+
+                    <div class="arrows">
+                        <button onclick="prevPromotion()">&#10094;</button>
+                        <button onclick="nextPromotion()">&#10095;</button>
                     </div>
                 </div>
             </div>
@@ -199,33 +537,39 @@
     </section>
   <section class="subscribe">
     <!-- Форма для подписки на акции -->
-    <h1>Форма регистрации</h1>
+    <h2 style="text-align: center;">Подписка на закрытые акции</h2>
   <form class="subscription-form" id="subscriptionForm" onsubmit="event.preventDefault(); navigateToThankYouPage();">
     <label for="email">Введите ваш email:</label><br>
-    <input type="email" id="email" name="email" placeholder="Введите ваш эмаил" required><br><br>
+    <input type="email" id="email" name="email" placeholder="email" required><br><br>
     <button type="submit">Подписаться</button>
   </form>
     
   </section>
-  <footer>
+
+
+<footer class="footer">
     <!-- Подвал сайта -->
     <div class="podval">
-      <div class="logo">
-        <img src="logocompany/2.jpeg" alt="logo2" style="width:228px;height:228px;">
-      </div>
-      <div class="contact" style="display:flex;">
-        <h3>Телефон <br> <a>+7(800)111-20-20</a></h3>
-        <h6>Home  <a href="#">http://xxxxxx</a></h6>
-        <h6>Login  <a href="#">http://xxxxxx/login</a></h6>
-        <h6>Sign up  <a href="#">http://xxxxxx/signup</a></h6>
-        <h6>Contact  <a href="#">http://xxxxxx/contact</a></h6>
-        <h6>News  <a href="#">http://xxxxxx/news</a></h6>
-        <h6>Return  <a href="#">http://xxxxxx/return</a></h6>
-        <h6>Feedback <a href="#">https://xxxxxx/feedback</a></h6>
-      </div>
-      <div class="navigation"></div>
+        <div class="logo">
+            <img src="images/for logo/1.jpg" alt="logo2">
+        </div>
+        <div class="contact">
+            <h3>Телефон <br> <a href="tel:+78001112020">8 (800) 111-20-20</a></h3>
+            <div class="contact-links">
+                <h6><a href="http://xxxxxx">Home</a></h6>
+                <h6><a href="http://xxxxxx/login">Login</a></h6>
+                <h6><a href="http://xxxxxx/signup">Sign up</a></h6>
+                <h6><a href="http://xxxxxx/contact">Contact</a></h6>
+                <h6><a href="http://xxxxxx/news">News</a></h6>
+                <h6><a href="http://xxxxxx/return">Return</a></h6>
+                <h6><a href="http://xxxxxx/feedback">Feedback</a></h6>
+            </div>
+        </div>
     </div>
-  </footer>
+</footer>
+
+
+
   <script>
     function search() {
     var regionInput = document.getElementById('region').value;
@@ -278,6 +622,51 @@
                 imgElement.style.marginRight = '0'; // - отступ
             }
         }
+
+ var currentPromotion = 1; // Текущая акция
+
+        function showPromotion(index) {
+            // Скрываем все акции
+            document.querySelectorAll('.promotion').forEach(function (element) {
+                element.style.display = 'none';
+            });
+
+            // Отображаем акцию по текущему индексу
+            document.querySelector('.promotion[data-index="' + index + '"]').style.display = 'block';
+        }
+
+        function nextPromotion() {
+            currentPromotion++;
+            if (currentPromotion > 3) {
+                currentPromotion = 1;
+            }
+            showPromotion(currentPromotion);
+        }
+
+        function prevPromotion() {
+            currentPromotion--;
+            if (currentPromotion < 1) {
+                currentPromotion = 3;
+            }
+            showPromotion(currentPromotion);
+        }
+
+        showPromotion(currentPromotion);
+        setInterval(nextPromotion, 9000);
+
+        function toggleInfo(infoId, imgId) {
+            var infoElement = document.getElementById(infoId);
+            var imgElement = document.getElementsByClassName(imgId)[0];
+
+            if (infoElement.style.display === 'none' || infoElement.style.display === '') {
+                infoElement.style.display = 'block';
+                imgElement.style.marginRight = '5px';
+            } else {
+                infoElement.style.display = 'none';
+                imgElement.style.marginRight = '0';
+            }
+        }
+</script>
         
 </script>
 </body>

@@ -4,57 +4,311 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('images/people/2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#bookingInfo {
+    background-color: rgba(255, 255, 255, 1);
+    padding: 20px;
+    margin-top: 10%; /* Adjust the margin-top to a percentage that works well for your layout */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+    max-height: 70%; /* Limit the height of the container to 70% of the viewport height */
+    overflow-y: auto; /* Add a vertical scrollbar if the content overflows */
+}
+        img {
+            margin-top: 20px;
+            max-width: 30%; /* Adjust the max-width to make the image smaller */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #bookingContainer {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        #selectedDateHeader {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        #changeDateButton {
+            margin: 10px 0;
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #changeDateButton:hover {
+            background-color: #2980b9;
+        }
+
+        /* Additional services section styles */
+        #additionalServices {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+        
+
+        .serviceLabel {
+    display: inline-block;
+    margin: 0 15px 15px 0;
+    cursor: pointer;
+}
+
+        .serviceLabel img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 8px;
+        }
+
+        .serviceLabel span {
+            display: block;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Total cost square styles */
+        #totalCostSquare {
+            background-color: #3498db;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        #totalCostSquare h3 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        #totalCostSquare span {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* Booking buttons styles */
+        #bookingButtons {
+            margin-top: 20px;
+        }
+
+        .bookingButton {
+            padding: 12px 20px;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .bookingButton.primary {
+            background-color: #3498db;
+        }
+
+        .bookingButton.primary:hover {
+            background-color: #2980b9;
+        }
+
+        .bookingButton.secondary {
+            background-color: #27ae60;
+        }
+
+        .bookingButton.secondary:hover {
+            background-color: #219a52;
+        }
+        .serviceCheckbox {
+    /* Remove display: none; to make the checkboxes visible */
+}
+    </style>
 </head>
 <body>
-    <div id="bookingInfo"></div>
+    <div id="bookingContainer">
+        <div id="bookingInfo"></div> <!-- New section to display booking information -->
+        <h2>Информация для бронирования</h2>
+        <div id="selectedDateHeader"></div>
+        <button id="changeDateButton" onclick="toggleDateInput()">Изменить дату</button>
+        <input type="date" id="calendarDateInput" onchange="updateSelectedDate()" style="display: none;">
+
+        <div id="additionalServices">
+            <h3>Дополнительные услуги</h3>
+            <label class="serviceLabel" for="foodCheckbox">
+                <input type="checkbox" id="foodCheckbox" class="serviceCheckbox">
+                
+                <span>Организация питания (+500 р/чел)</span>
+            </label>
+
+            <label class="serviceLabel" for="animatorCheckbox">
+                <input type="checkbox" id="animatorCheckbox" class="serviceCheckbox">
+                
+                <span>Услуги аниматоров (+5000 р/сутки)</span>
+            </label>
+
+            <label class="serviceLabel" for="hostCheckbox">
+                <input type="checkbox" id="hostCheckbox" class="serviceCheckbox">
+               
+                <span>Услуги ведущего (+500 р/час)</span>
+            </label>
+
+            <label class="serviceLabel" for="taxiCheckbox">
+                <input type="checkbox" id="taxiCheckbox" class="serviceCheckbox">
+               
+                <span>Услуги детского такси (+50 р + 10 р за каждый км)</span>
+            </label>
+        </div>
+
+       <div id="totalCostSquare">
+            <h3>Общая стоимость: <span id="totalCost">0</span> руб.</h3>
+        </div>
+
+        <div id="bookingButtons">
+            <button class="bookingButton primary" onclick="calculateTotalCost()">Рассчитать стоимость</button>
+            <button class="bookingButton secondary" onclick="submitBooking()">Оформить бронирование</button>
+        </div>
+    </div>
+
+
 
     <script type="text/javascript">
         var bookingInfoElement = document.getElementById('bookingInfo');
+        var dateHeaderElement = document.getElementById('selectedDateHeader');
+        var calendarDateInput = document.getElementById('calendarDateInput');
 
+        function toggleDateInput() {
+            calendarDateInput.style.display = (calendarDateInput.style.display === 'none') ? 'block' : 'none';
+        }
 
-        // Функция для отображения информации о бронировании
-        // В файле booking.html
+        const bookingType = localStorage.getItem('bookingType');
+        const bookingPrice = localStorage.getItem('bookingPrice');
+        const bookingImage = localStorage.getItem('bookingImage');
+        const bookingRegion = localStorage.getItem('region');
+        const bookingName = localStorage.getItem('address');
+        let bookingDate = localStorage.getItem('date');
+        const bookingPeopleCount = localStorage.getItem('people');
 
-// Получаем значения из localStorage
-const bookingType = localStorage.getItem('bookingType');
-const bookingPrice = localStorage.getItem('region');
-const bookingImage = localStorage.getItem('bookingImage');
-const bookingRegion = localStorage.getItem('region');
-const bookingName = localStorage.getItem('region');
-const bookingDate = localStorage.getItem('date');
-const bookingPeopleCount = localStorage.getItem('people');
+        console.log('Booking Type:', bookingType);
+        console.log('Booking Price:', bookingPrice);
+        console.log('Booking Image:', bookingImage);
+        console.log('Booking Region:', bookingRegion);
+        console.log('address', bookingName);
+        console.log('Booking Date:', bookingDate);
+        console.log('Booking People Count:', bookingPeopleCount);
 
-// Выводим значения в консоль для проверки
-console.log('Booking Type:', bookingType);
-console.log('Booking Price:', bookingPrice);
-console.log('Booking Image:', bookingImage);
-console.log('Booking Region:', bookingRegion);
-console.log('Booking Name:', bookingName);
-console.log('Booking Date:', bookingDate);
-console.log('Booking People Count:', bookingPeopleCount);
+        if (bookingType && bookingPrice && bookingImage && bookingRegion && bookingName && bookingDate && bookingPeopleCount) {
+            bookingInfoElement.innerHTML = '<h2>Информация для бронирования:</h2>';
+            bookingInfoElement.innerHTML += '<h3>Регион: ' + bookingRegion + '</h3>';
+            bookingInfoElement.innerHTML += '<h3>Адрес локации: ' + bookingName + '</h3>';
+            bookingInfoElement.innerHTML += '<h3>Дата мероприятия: <span id="eventDate">' + bookingDate + '</span></h3>';
+            bookingInfoElement.innerHTML += '<input type="date" id="calendarDateInput" onchange="updateSelectedDate()">';
+            bookingInfoElement.innerHTML += '<h3>Количество человек: ' + bookingPeopleCount + '</h3>';
+            bookingInfoElement.innerHTML += '<h3>Стоимость: ' + bookingPrice + '</h3>';
+            bookingInfoElement.innerHTML += '<img src="' + bookingImage + '" alt="' + bookingType + '">';
+        } else {
+            bookingInfoElement.innerHTML = 'Информация для бронирования не найдена.';
+        }
 
-            
-            if (bookingType && bookingPrice && bookingImage && bookingRegion && bookingName && bookingDate && bookingPeopleCount) {
-                bookingInfoElement.innerHTML = '<h2>Информация для бронирования:</h2>';
-                bookingInfoElement.innerHTML += '<h3>Регион: ' + bookingRegion + '</h3>';
-                bookingInfoElement.innerHTML += '<h3>Адрес локации: ' + bookingName + '</h3>';
-                bookingInfoElement.innerHTML += '<h3>Дата мероприятия: ' + bookingDate + '</h3>';
-                bookingInfoElement.innerHTML += '<h3>Количество человек: ' + bookingPeopleCount + '</h3>';
-                bookingInfoElement.innerHTML += '<h3>Стоимость: ' + bookingPrice + '</h3>';
-                bookingInfoElement.innerHTML += '<img src="' + bookingImage + '" alt="' + bookingType + '" style="width: 200px;">';
-                bookingInfoElement.innerHTML += '<form id="bookingForm">';
-                bookingInfoElement.innerHTML += '   <!-- Добавьте остальные поля для бронирования, как в вашем предыдущем коде -->';
-                bookingInfoElement.innerHTML += '   <button type="button" onclick="calculateTotalCost()">Рассчитать стоимость</button>';
-                bookingInfoElement.innerHTML += '   <button type="button" onclick="submitBooking()">Оформить бронирование</button>';
-                bookingInfoElement.innerHTML += '</form>';
+        function updateSelectedDate() {
+            var selectedDateInput = document.getElementById('calendarDateInput');
+            bookingDate = selectedDateInput.value;
+            localStorage.setItem('date', bookingDate);
+
+            if (bookingDate == null || bookingDate === '') {
+                dateHeaderElement.innerHTML = '';
             } else {
-                bookingInfoElement.innerHTML = 'Информация для бронирования не найдена.';
+                document.getElementById('eventDate').innerText = bookingDate;
             }
-        
 
-        
+            displayLocations();
+        }
 
-        // Остальной код для calculateTotalCost, submitBooking и прочего...
+        function displayLocations() {
+            console.log('Отображение локаций');
+        }
+
+        function calculateBaseCost() {
+            var baseCostElement = document.getElementById('baseCost');
+
+            if (bookingPrice) {
+                baseCostElement.innerText = bookingPrice + ' руб.';
+            } else {
+                alert('Не удалось рассчитать базовую стоимость. Пожалуйста, укажите стоимость.');
+            }
+        }
+
+        function calculateTotalCost() {
+            var totalCostElement = document.getElementById('totalCost');
+
+            if (bookingPeopleCount && bookingPrice) {
+                var additionalServicesCost = calculateAdditionalServicesCost();
+                totalCostElement.innerText = (parseInt(bookingPrice) + additionalServicesCost) + ' ';
+            } else {
+                alert('Не удалось рассчитать стоимость. Пожалуйста, укажите количество человек и стоимость.');
+            }
+        }
+
+        function calculateAdditionalServicesCost() {
+            var additionalServicesCost = 0;
+
+            var foodCheckbox = document.getElementById('foodCheckbox');
+            var animatorCheckbox = document.getElementById('animatorCheckbox');
+            var hostCheckbox = document.getElementById('hostCheckbox');
+            var taxiCheckbox = document.getElementById('taxiCheckbox');
+
+            if (foodCheckbox.checked) {
+                additionalServicesCost += (parseInt(bookingPeopleCount) * 500);
+            }
+
+            if (animatorCheckbox.checked) {
+                additionalServicesCost += 5000;
+            }
+
+            if (hostCheckbox.checked) {
+                additionalServicesCost += 2 * 500; // Assuming 2 hours duration
+            }
+
+            if (taxiCheckbox.checked) {
+                additionalServicesCost += 50; // Base cost
+                additionalServicesCost += 10 * 20; // Assuming 20 km distance
+            }
+
+            return additionalServicesCost;
+        }
+
+        function submitBooking() {
+            // Additional logic for submitting booking
+
+            window.location.href = 'index.html';
+        }
     </script>
 </body>
 </html>

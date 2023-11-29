@@ -1,43 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selected Zone</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            background-image: url('images/people/2.jpg'); /* Установка заднего фона */
+            background-size: contain; /* Изображение вписывается в задний фон, сохраняя пропорции */
+            background-position: center; /* Центрируем изображение по центру */
+        }
+
+        #selectedZone {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            text-align: center;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+
+        img {
+            margin-top: 10px;
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        button {
+            padding: 20px;
+            margin-top: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
+
 <body>
-     <div id="selectedZone"></div>
+    <div id="selectedZone"></div>
+
 
     <script type="text/javascript">
         const urlParams = new URLSearchParams(window.location.search);
-const region = urlParams.get('region');
-const name = urlParams.get('name');
-const date = localStorage.getItem('date');
-const peopleCount = localStorage.getItem('people');
- console.log('Region:', region);
-    console.log('Name:', name);
-    console.log('Selected Date:', date);
-    console.log('People Count:', peopleCount);
+        const region = urlParams.get('region');
+        const name = urlParams.get('name');
+        const date = localStorage.getItem('date');
+        const peopleCount = localStorage.getItem('people');
+        console.log('Region:', region);
+        console.log('Name:', name);
+        console.log('Selected Date:', date);
+        console.log('People Count:', peopleCount);
 
-        
         var selectedZoneElement = document.getElementById('selectedZone');
 
-        window.onload = function(){
+        window.onload = function () {
             if (region === 'Красноярский край' && name === 'Парк-отель Чайка') {
                 displaySelectedZones([
                     { type: "Шатер", quantity: 2, capacity: 50, price: 5000, image: "images/plan/1.jpg" },
                     { type: "Летний домик", quantity: 5, capacity: 10, price: 3000, image: "images/plan/2.jpg" },
                     { type: "Беседка", quantity: 10, capacity: 15, price: 2000, image: "images/plan/3.jpeg" },
-                    { type: "Игровая комната", quantity: 1, capacity: 10, price: "300 р/час за 1 посетителя", image: "images/plan/4.jpg" },
-                    { type: "Спортивная площадка", quantity: 1, capacity: 15, price: "200 р/час за 1 посетителя", image: "images/plan/5.jpg" }
+                    { type: "Игровая комната", quantity: 1, capacity: 10, price: "300 р в час за 1 посетителя", image: "images/plan/4.jpg" },
+                    { type: "Спортивная площадка", quantity: 1, capacity: 15, price: "200 р в час за 1 посетителя", image: "images/plan/5.jpg" }
                 ]);
             } else if (region === 'Алтайский край' && name === 'Туристическая база Озеро Красилово') {
                 displaySelectedZones([
                     { type: "Шатер", quantity: 1, capacity: 50, price: 7000, image: "images/plan/6.jpg" },
                     { type: "Летний домик", quantity: 10, capacity: 15, price: 4000, image: "images/plan/7.jpg" },
                     { type: "Беседка", quantity: 10, capacity: 15, price: 2000, image: "images/plan/8.jpg" },
-                    { type: "Бассейн с зоной отдыха и летним домиком", quantity: 1, capacity: 15, price: 20000, image: "images/plan/9.jpg"  },
-                    { type: "Игровая площадка", quantity: 1, capacity: 10, price: "300 р/час за 1 посетителя", image: "images/plan/10.png" }
+                    { type: "Бассейн с зоной отдыха и летним домиком", quantity: 1, capacity: 15, price: 20000, image: "images/plan/9.jpg" },
+                    { type: "Игровая площадка", quantity: 1, capacity: 10, price: "300 р в час за 1 посетителя", image: "images/plan/10.png" }
                 ]);
             } else {
                 // Добавьте условия для других локаций, если необходимо
@@ -52,27 +107,28 @@ const peopleCount = localStorage.getItem('people');
                 var zone = zones[i];
                 selectedZoneElement.innerHTML += '<h3>Тип: ' + zone.type + '</h3>';
                 // Добавление изображения и кнопки "Забронировать"
-                selectedZoneElement.innerHTML += '<img src="' + zone.image + '" alt="' + zone.type + '" style="width: 200px;">';
+                selectedZoneElement.innerHTML += '<img src="' + zone.image + '" alt="' + zone.type + '">';
                 selectedZoneElement.innerHTML += '<p>Количество: ' + zone.quantity + ' шт.</p>';
                 selectedZoneElement.innerHTML += '<p>Вместимость: до ' + zone.capacity + ' чел</p>';
                 selectedZoneElement.innerHTML += '<p>Стоимость: ' + zone.price + '</p>';
                 // Добавление кнопки "Забронировать" с переходом на страницу бронирования
-                selectedZoneElement.innerHTML += '<button onclick="redirectToBooking(\'' + zone.type + '\', ' + zone.price + ', \'' + zone.image + '\')">Забронировать</button>';
+                selectedZoneElement.innerHTML += '<button onclick="redirectToBooking(\'' + zone.type + '\', \'' + zone.price + '\', \'' + zone.image + '\', \'' + region + '\', \'' + name + '\', \'' + date + '\', \'' + peopleCount + '\')">Забронировать</button>';
             }
         }
 
         // Функция для перехода на страницу бронирования с параметрами зоны
-         window.redirectToBooking = function(type, price, image, region, name, selectedDate, peopleCount) {
-    localStorage.setItem('bookingType', type);
-    localStorage.setItem('bookingPrice', price);
-    localStorage.setItem('bookingImage', image);
-    localStorage.setItem('bookingRegion', region);
-    localStorage.setItem('bookingName', name);
-    localStorage.setItem('bookingDate', selectedDate);
-    localStorage.setItem('bookingPeopleCount', peopleCount); 
-    window.location.href = 'booking.html';
-};
+        window.redirectToBooking = function (type, price, image, region, name, selectedDate, peopleCount) {
+            localStorage.setItem('bookingType', type);
+            localStorage.setItem('bookingPrice', price);
+            localStorage.setItem('bookingImage', image);
+            localStorage.setItem('bookingRegion', region);
+            localStorage.setItem('bookingName', name);
+            localStorage.setItem('bookingDate', selectedDate);
+            localStorage.setItem('bookingPeopleCount', peopleCount);
+            window.location.href = 'booking.html';
+        };
 
     </script>
 </body>
+
 </html>

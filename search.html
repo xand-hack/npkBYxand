@@ -1,10 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selected Location</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: url('images/people/2.jpg') center/cover no-repeat;
+        }
+
+        #locations {
+            padding: 20px;
+            margin: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+        }
+
+        #selectedDate,
+        #region,
+        #favorites {
+            padding: 20px;
+            margin: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 800px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        label[for="calendarDateInput"],
+        #calendarDateInput {
+            background-color: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        input[type="date"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
         /* Стили для локаций в Красноярском крае */
         .KrasnoyarskRegion {
             background-color: lightblue;
@@ -15,70 +70,131 @@
             background-color: lightgreen;
         }
 
-        /* Другие стили, если необходимо */
+        .center-both {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Стили для кнопок */
+        .custom-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .remove-button {
+            background: none;
+            border: none;
+            color: red;
+            font-size: 18px;
+            cursor: pointer;
+        }
     </style>
 </head>
-<body>
-    <div id="selectedDate"></div>
-    <div id="region"></div>
-    <div id="locations"></div>
-    <div id="favorites"></div>
 
+<body>
+    <div id="locations"></div>
+
+    <label for="calendarDateInput">Выберите дату:</label>
+    <input type="date" id="calendarDateInput" onchange="updateSelectedDate()">
+
+    <div id="favorites" class="center-both"></div>
     <script type="text/javascript">
         let selectedDate = localStorage.getItem('date');
         let regionValue = localStorage.getItem('region');
         let peopleInput = localStorage.getItem('people');
+        let selectedAddress;
 
         let favorites = [];
+        let locationsData;
 
         var dateElement = document.getElementById('selectedDate');
         var regionElement = document.getElementById('region');
         var locationsElement = document.getElementById('locations');
         var favoritesElement = document.getElementById('favorites');
-        console.log('Read data from localStorage:', selectedDate, regionValue,peopleInput);
+        var calendarElement = document.getElementById('calendar');
+        var calendarDateInput = document.getElementById('calendarDateInput');
+        console.log('Read data from localStorage:', selectedDate, regionValue, peopleInput);
 
-
-
-        window.onload = function(){
-            if(selectedDate == null){
-                dateElement.innerHTML = '';
-            } else {
-                dateElement.innerHTML = 'Selected Date: ' + selectedDate;
+function displayFavorites() {
+            favoritesElement.innerHTML = '<h3>Избранное:</h3>';
+            for (var k = 0; k < favorites.length; k++) {
+                favoritesElement.innerHTML += '<p>' + favorites[k].name + ' в регионе ' + favorites[k].region + ' с ' + favorites[k].availableZones + ' свободными зонами. Адрес: ' + favorites[k].address + '</p>';
+                favoritesElement.innerHTML += '<button class="remove-button" onclick="removeFromFavorites(\'' + favorites[k].region + '\', \'' + favorites[k].name + '\')">&#10006;</button>';
             }
+        }
 
-            if(regionValue == null){
-                regionElement.innerHTML = '';
+        function addToFavorites(region, name, availableZones, address) {
+            if (!isLocationInFavorites(region, name)) {
+                favorites.push({ region: region, name: name, availableZones: availableZones, address: address });
+                displayFavorites();
             } else {
-                regionElement.innerHTML = 'Region: ' + regionValue;
+                alert('Эта локация уже в избранном.');
             }
+        }
 
-            // Пример данных о локациях
-            var locationsData = [
+        window.onload = function () {
+            locationsData = [
                 {
                     region: "Красноярский край",
                     name: "Парк-отель Чайка",
                     address: "Ачинский район, с. Ключи, Пионерская долина, 5",
                     availableZones: 5,
                 },
-                
                 {
                     region: "Алтайский край",
                     name: "Туристическая база Озеро Красилово",
                     address: "Косихинский район, с. Озеро-Красилово, ул. Пушкина д.1",
                     availableZones: 5,
                 }
-                // Добавьте данные для других локаций, если необходимо
             ];
 
-            // Установка данных в localStorage
+            displayLocations();
+            displayFavorites();
+        }
+
+        
+
+        function selectZone(region, name, address) {
+            selectedAddress = address;
+            localStorage.setItem('address', selectedAddress);
+            window.location.href = 'seat.html?region=' + encodeURIComponent(region) + '&name=' + encodeURIComponent(name);
+        }
+
+        function isLocationInFavorites(region, name) {
+            for (var k = 0; k < favorites.length; k++) {
+                if (favorites[k].region === region && favorites[k].name === name) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function removeFromFavorites(region, name) {
+            favorites = favorites.filter(function (item) {
+                return !(item.region === region && item.name === name);
+            });
+            displayFavorites();
+        }
+
+         
+
+        function updateSelectedDate() {
+            var selectedDateInput = document.getElementById('calendarDateInput');
+            selectedDate = selectedDateInput.value;
             localStorage.setItem('date', selectedDate);
-            localStorage.setItem('region', regionValue);
-            localStorage.setItem('people', peopleInput);
+            displayLocations();
+        }
 
-
-            // Вывод информации о локациях
-            locationsData.forEach(function(locationInfo) {
-                // Создание div для каждой локации
+        function displayLocations() {
+            locationsElement.innerHTML = '<h3></h3>';
+            locationsData.forEach(function (locationInfo) {
                 var locationDiv = document.createElement('div');
                 locationDiv.classList.add(locationInfo.region.replace(/\s/g, ''));
 
@@ -86,43 +202,13 @@
                 locationDiv.innerHTML += '<p>Наименование и адрес локации: ' + locationInfo.name + ', ' + locationInfo.address + '</p>';
                 locationDiv.innerHTML += '<p>Дата: ' + selectedDate + '</p>';
                 locationDiv.innerHTML += '<p>Количество свободных зон: ' + locationInfo.availableZones + '</p>';
-                locationDiv.innerHTML += '<button onclick="addToFavorites(\'' + locationInfo.region + '\', \'' + locationInfo.name + '\', ' + locationInfo.availableZones + ')">Добавить в избранное</button>';
-                locationDiv.innerHTML += '<button onclick="selectZone(\'' + locationInfo.region + '\', \'' + locationInfo.name + '\')">Выбрать зону</button>';
+                locationDiv.innerHTML += '<button onclick="addToFavorites(\'' + locationInfo.region + '\', \'' + locationInfo.name + '\', ' + locationInfo.availableZones + ', \'' + locationInfo.address + '\')">Добавить в избранное</button>';
+                locationDiv.innerHTML += '<button onclick="selectZone(\'' + locationInfo.region + '\', \'' + locationInfo.name + '\', \'' + locationInfo.address + '\')">Выбрать зону</button>';
 
                 locationsElement.appendChild(locationDiv);
             });
-
-            displayFavorites();
-
-            window.addToFavorites = function(region, name, availableZones) {
-                if (!isLocationInFavorites(region, name)) {
-                    favorites.push({ region: region, name: name, availableZones: availableZones });
-                    displayFavorites();
-                } else {
-                    alert('Эта локация уже в избранном.');
-                }
-            };
-
-            window.selectZone = function(region, name) {
-                window.location.href = 'seat.html?region=' + encodeURIComponent(region) + '&name=' + encodeURIComponent(name);
-            };
-
-            function isLocationInFavorites(region, name) {
-                for (var k = 0; k < favorites.length; k++) {
-                    if (favorites[k].region === region && favorites[k].name === name) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            function displayFavorites() {
-                favoritesElement.innerHTML = '<h3>Избранное:</h3>';
-                for (var k = 0; k < favorites.length; k++) {
-                    favoritesElement.innerHTML += '<p>' + favorites[k].name + ' в регионе ' + favorites[k].region + ' с ' + favorites[k].availableZones + ' свободными зонами</p>';
-                }
-            }
         }
     </script>
 </body>
+
 </html>
