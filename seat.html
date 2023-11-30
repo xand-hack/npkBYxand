@@ -18,7 +18,7 @@
             background-color: #f4f4f4;
             background-image: url('images/people/2.jpg'); /* Установка заднего фона */
             background-size: contain; /* пропорции */
-            background-position: center; /* Центрируем изображение по центру */
+            background-position: center; 
         }
 
         #selectedZone {
@@ -95,18 +95,17 @@
                     { type: "Игровая площадка", quantity: 1, capacity: 10, price: "300 р в час за 1 посетителя", image: "images/plan/10.png" }
                 ]);
             } else {
-                // Добавьте условия для других локаций, если необходимо
                 selectedZoneElement.innerHTML = 'Выбранная зона не найдена.';
             }
         };
 
-        // Функция для отображения информации о выбранных зонах
+        // отображения информации о выбранных зонах
         function displaySelectedZones(zones) {
             selectedZoneElement.innerHTML = '<h2>Выбранные зоны:</h2>';
             for (var i = 0; i < zones.length; i++) {
                 var zone = zones[i];
                 selectedZoneElement.innerHTML += '<h3>Тип: ' + zone.type + '</h3>';
-                // Добавление изображения и кнопки "Забронировать"
+                // Добавление изображения
                 selectedZoneElement.innerHTML += '<img src="' + zone.image + '" alt="' + zone.type + '">';
                 selectedZoneElement.innerHTML += '<p>Количество: ' + zone.quantity + ' шт.</p>';
                 selectedZoneElement.innerHTML += '<p>Вместимость: до ' + zone.capacity + ' чел</p>';
@@ -130,5 +129,4 @@
 
     </script>
 </body>
-
 </html>
