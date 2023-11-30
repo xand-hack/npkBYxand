@@ -8,12 +8,24 @@
 
     <title>Праздник в каждый дом</title>
     <style>
+      @font-face {
+    font-family: 'Roboto Medium';
+    src: url('fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
         body {
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
             color: #333;
+            font-family: 'Roboto Medium', Arial, sans-serif;
         }
+
+p {
+    font-family: 'Roboto Medium', Arial, sans-serif;
+}
 
 header {
     background-color: #fff;
@@ -93,8 +105,9 @@ header {
         h4,
         h5,
         h6 {
-            font-family: 'LongCang', sans-serif;
             color: #4e4e4e;
+    font-family: 'Roboto Medium', Arial, sans-serif;
+
         }
 
         .promotions {
@@ -376,6 +389,7 @@ header {
 
 <body>
     <header>
+       <!-- Шапка сайта -->
         <nav class="navbar">
             <div class="logo">
                 <img src="images/for logo/1.jpg" alt="logo">
@@ -384,15 +398,15 @@ header {
                 <li class="frst"><a href="#promotions">Акции</a></li>
                 <li class="scnd"><a href="#con-search">Поиск</a></li>
                 <li><a href="search.html">Управление бронированием</a></li>
-
-
             </ul>
         </nav>
     </header>
+
   <section class="company-info">
     <!-- Информация о компании, девиз, отзывы -->
     <h3>Чтобы воспользоваться услугами компании необходимо:</h3>
     <div class="step-container">
+       <!-- Контейнер для шагов с описанием -->
         <div class="step">1</div>
         <div class="step-line"></div>
         <div class="step">2</div>
@@ -405,6 +419,7 @@ header {
         <div class="step-line"></div>
         <div class="step">6</div>
     </div>
+    <!-- ... Описания остальных шагов -->
     <p>1. Выбрать даты праздника;</p>
     <p>2. Выбрать количество участников;</p>
     <p>3. Выбрать желаемую локацию для праздника, соответствующую условиям выше;</p>
@@ -424,9 +439,7 @@ header {
 
 
   <!--ОТЗЫВЫ-->
-
 <section class="reviews">
-    
     <div class="review">
         <div class="review-info">
             <h2>Светлана</h2>
@@ -434,6 +447,7 @@ header {
             <img src="images/people/6.jpg" alt="Светлана">
         </div>
         <div class="review-content">
+          <!-- ... Блок с информацией об отзыве -->
             <p>Спасибо большое! Дети в бурных эмоция, аниматор супер, даже взрослые участвовали, как это было все классно, энергично, здорово! Успехов вам больших!</p>
         </div>
     </div>
@@ -445,6 +459,7 @@ header {
             <img src="images/people/7.jpg" alt="Алена">
         </div>
         <div class="review-content">
+          <!-- ... Блок с информацией об отзыве -->
             <p>Всё очень понравилось. Игры хорошие, аниматоры отличные, костюмы классные! Дети были восторге!!!</p>
         </div>
     </div>
@@ -455,10 +470,10 @@ header {
             <img src="images/people/5.jpg" alt="Марина ">
         </div>
         <div class="review-content">
+          <!-- ... Блок с информацией об отзыве -->
             <p>ДР ребенка 3 года, аниматоры молодцы, все очень хорошо подготовили! 
 Крош отработал на 5, все дети в восторге! Шоу мыльных пузырей с погружением чудесное и волшебное! Детям хотелось немного больше контакта с пузырями!
 Ребят, только на счет подарка в конце шоу оговаривайте с родителями! Иногда шоколад маленьким детям дарить не стоит !
-
 </p>
         </div>
     </div>
@@ -470,13 +485,11 @@ header {
             <img src="images/people/9.jpg" alt="Наталия">
         </div>
         <div class="review-content">
+          <!-- ... Блок с информацией об отзыве -->
             <p>Уже не первый раз заказываем праздник у вас, как всегда вы огромные специалисты и мастера своего дела! Отлично всё: от приёма заказа, до финала праздника. Удачи и до новых встреч!!</p>
         </div>
     </div>
 </section>
-
-
-
   
  <section class="search">
         <!-- Форма поиска -->
@@ -488,15 +501,11 @@ header {
                     <option value="Алтайский край">Алтайский край</option>
                     <option value="Красноярский край">Красноярский край</option>
                 </select>
-
                 <label for="date">Дата:</label>
                 <input type="date" id="date" name="date">
-
                 <label for="people">Количество людей:</label>
                 <input type="number" id="people" name="people" min="1">
-
                 <button type="button" onclick="search()">Найти</button>
-
                 <div id="errorMessage" class="error-message"></div>
             </form>
         </div>
@@ -548,11 +557,12 @@ header {
 
 
 <footer class="footer">
-    <!-- Подвал -->
+    <!-- Подвал сайта -->
     <div class="podval">
         <div class="logo">
             <img src="images/for logo/1.jpg" alt="logo2">
         </div>
+        <!-- ... Логотип и контактная информация -->
         <div class="contact">
             <h3>Телефон <br> <a href="tel:+78001112020">8 (800) 111-20-20</a></h3>
             <div class="contact-links">
@@ -570,103 +580,91 @@ header {
 
 
 
-  <script>
+ <script>
+    // Функция для выполнения поиска
     function search() {
-    var regionInput = document.getElementById('region').value;
-    var dateInput = document.getElementById('date');
-    var peopleInput = document.getElementById('people').value;
+        var regionInput = document.getElementById('region').value;
+        var dateInput = document.getElementById('date');
+        var peopleInput = document.getElementById('people').value;
 
-    if (!regionInput || !dateInput.value || !peopleInput) {
-        document.getElementById('errorMessage').innerText = 'Заполните все поля.';
-    } else if (peopleInput > 50) {
-        document.getElementById('errorMessage').innerText = 'Количество людей не должно превышать 50.';
-    } else {
-        var currentDate = new Date().toISOString().split('T')[0];
-        if (dateInput.value < currentDate) {
-            document.getElementById('errorMessage').innerText = 'Выберите будущую дату.';
-            return;
+        if (!regionInput || !dateInput.value || !peopleInput) {
+            document.getElementById('errorMessage').innerText = 'Заполните все поля.';
+        } else if (peopleInput > 50) {
+            document.getElementById('errorMessage').innerText = 'Количество людей не должно превышать 50.';
+        } else {
+            var currentDate = new Date().toISOString().split('T')[0];
+            if (dateInput.value < currentDate) {
+                document.getElementById('errorMessage').innerText = 'Выберите будущую дату.';
+                return;
+            }
+
+            document.getElementById('errorMessage').innerText = '';
+
+            // Сохранение данных в localStorage 
+            localStorage.setItem('region', regionInput);
+            localStorage.setItem('date', dateInput.value);
+            localStorage.setItem('people', peopleInput);
+
+            // Переход на страницу поиска
+            window.location.href = 'search.html';
         }
-
-        document.getElementById('errorMessage').innerText = '';
-
-        // Сохранение данных в localStorage 
-        localStorage.setItem('region', regionInput);
-        localStorage.setItem('date', dateInput.value);
-        localStorage.setItem('people', peopleInput);
-
-
-
-        window.location.href = 'search.html';
     }
-}
 
-
-
+    // Функция для навигации на страницу благодарности
     function navigateToThankYouPage() {
-      const email = document.getElementById('email').value;
-      // Сохранение 
-      window.location.href = '#';  
+        const email = document.getElementById('email').value;
+        window.location.href = '#'; // Убедитесь, что заменили # на вашу целевую страницу благодарности
     }
 
-    //паказать инфу по акциям 
-     function toggleInfo(infoId, imgId) {
-            var infoElement = document.getElementById(infoId);
-            var imgElement = document.getElementsByClassName(imgId)[0];
+    // Функция для переключения видимости информации об акциях
+    function toggleInfo(infoId, imgId) {
+        var infoElement = document.getElementById(infoId);
+        var imgElement = document.getElementsByClassName(imgId)[0];
 
-            if (infoElement.style.display === 'none' || infoElement.style.display === '') {
-                infoElement.style.display = 'block';
-                imgElement.style.marginRight = '5px'; //ориг стиль
-            } else {
-                infoElement.style.display = 'none';
-                imgElement.style.marginRight = '0'; // - отступ
-            }
+        if (infoElement.style.display === 'none' || infoElement.style.display === '') {
+            infoElement.style.display = 'block';
+            imgElement.style.marginRight = '5px'; // оригинальный стиль
+        } else {
+            infoElement.style.display = 'none';
+            imgElement.style.marginRight = '0'; // отступ
         }
+    }
 
- var currentPromotion = 1; // Текущая акция
+    var currentPromotion = 1; // Текущая акция
 
-        function showPromotion(index) {
-            // Скрываем все акции
-            document.querySelectorAll('.promotion').forEach(function (element) {
-                element.style.display = 'none';
-            });
+    // Функция для отображения определенной акции
+    function showPromotion(index) {
+        // Скрываем все акции
+        document.querySelectorAll('.promotion').forEach(function (element) {
+            element.style.display = 'none';
+        });
 
-            // Отображаем акцию по текущему индексу
-            document.querySelector('.promotion[data-index="' + index + '"]').style.display = 'block';
+        // Отображаем акцию по текущему индексу
+        document.querySelector('.promotion[data-index="' + index + '"]').style.display = 'block';
+    }
+
+    // Функции для переключения между акциями
+    function nextPromotion() {
+        currentPromotion++;
+        if (currentPromotion > 3) {
+            currentPromotion = 1;
         }
-
-        function nextPromotion() {
-            currentPromotion++;
-            if (currentPromotion > 3) {
-                currentPromotion = 1;
-            }
-            showPromotion(currentPromotion);
-        }
-
-        function prevPromotion() {
-            currentPromotion--;
-            if (currentPromotion < 1) {
-                currentPromotion = 3;
-            }
-            showPromotion(currentPromotion);
-        }
-
         showPromotion(currentPromotion);
-        setInterval(nextPromotion, 9000);
+    }
 
-        function toggleInfo(infoId, imgId) {
-            var infoElement = document.getElementById(infoId);
-            var imgElement = document.getElementsByClassName(imgId)[0];
-
-            if (infoElement.style.display === 'none' || infoElement.style.display === '') {
-                infoElement.style.display = 'block';
-                imgElement.style.marginRight = '5px';
-            } else {
-                infoElement.style.display = 'none';
-                imgElement.style.marginRight = '0';
-            }
+    function prevPromotion() {
+        currentPromotion--;
+        if (currentPromotion < 1) {
+            currentPromotion = 3;
         }
+        showPromotion(currentPromotion);
+    }
+
+    // Первоначальное отображение акции и установка интервала для автоматического переключения
+    showPromotion(currentPromotion);
+    setInterval(nextPromotion, 9000);
 </script>
-        
+
 </script>
 </body>
 </html>

@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking</title>
     <style>
+              @font-face {
+    font-family: 'Roboto Medium';
+    src: url('fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+h1 {
+    font-family: 'Roboto Medium', Arial, sans-serif;
+}
+
+p {
+    font-family: 'Roboto Medium', Arial, sans-serif;
+}
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -18,6 +31,7 @@ body {
     background-image: url('images/people/2.jpg');
     background-size: cover;
     background-position: center;
+    font-family: 'Roboto Medium', Arial, sans-serif;
 }
 
 #bookingInfo {
@@ -33,7 +47,7 @@ body {
 }
         img {
             margin-top: 20px;
-            max-width: 30%; 
+            max-width: 30%;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -68,8 +82,6 @@ body {
         #changeDateButton:hover {
             background-color: #2980b9;
         }
-
-        
         #additionalServices {
     margin-top: 20px;
     border-top: 1px solid #ddd;
@@ -97,7 +109,6 @@ body {
             color: #555;
         }
 
-        
         #totalCostSquare {
             background-color: #3498db;
             padding: 20px;
@@ -116,7 +127,6 @@ body {
             font-weight: bold;
         }
 
-        
         #bookingButtons {
             margin-top: 20px;
         }
@@ -148,66 +158,75 @@ body {
             background-color: #219a52;
         }
         .serviceCheckbox {
-    
 }
+
+
     </style>
 </head>
 <body>
+  <!-- Контейнер для всей информации о бронировании -->
     <div id="bookingContainer">
-        <div id="bookingInfo"></div> 
+        <!-- Контейнер для информации о бронировании -->
+        <div id="bookingInfo"></div>
         <h2>Информация для бронирования</h2>
+        <!-- Заголовок для выбранной даты -->
         <div id="selectedDateHeader"></div>
+        <!-- Кнопка для изменения даты -->
         <button id="changeDateButton" onclick="toggleDateInput()">Изменить дату</button>
+        <!-- Поле ввода даты, скрытое по умолчанию -->
         <input type="date" id="calendarDateInput" onchange="updateSelectedDate()" style="display: none;">
 
+        <!-- Контейнер для дополнительных услуг -->
         <div id="additionalServices">
             <h3>Дополнительные услуги</h3>
+            <!-- Чекбокс и описание для услуги "Организация питания" -->
             <label class="serviceLabel" for="foodCheckbox">
                 <input type="checkbox" id="foodCheckbox" class="serviceCheckbox">
-                
                 <span>Организация питания (+500 р/чел)</span>
             </label>
-
+            <!-- Аналогично для других услуг -->
             <label class="serviceLabel" for="animatorCheckbox">
                 <input type="checkbox" id="animatorCheckbox" class="serviceCheckbox">
-                
                 <span>Услуги аниматоров (+5000 р/сутки)</span>
             </label>
 
             <label class="serviceLabel" for="hostCheckbox">
                 <input type="checkbox" id="hostCheckbox" class="serviceCheckbox">
-               
                 <span>Услуги ведущего (+500 р/час)</span>
             </label>
 
             <label class="serviceLabel" for="taxiCheckbox">
                 <input type="checkbox" id="taxiCheckbox" class="serviceCheckbox">
-               
                 <span>Услуги детского такси (+50 р + 10 р за каждый км)</span>
             </label>
         </div>
 
-       <div id="totalCostSquare">
+        <!-- Контейнер для отображения общей стоимости -->
+        <div id="totalCostSquare">
             <h3>Общая стоимость: <span id="totalCost">0</span> руб.</h3>
         </div>
 
+        <!-- Контейнер для кнопок бронирования -->
         <div id="bookingButtons">
+            <!-- Кнопка для рассчета стоимости -->
             <button class="bookingButton primary" onclick="calculateTotalCost()">Рассчитать стоимость</button>
+            <!-- Кнопка для оформления бронирования -->
             <button class="bookingButton secondary" onclick="submitBooking()">Оформить бронирование</button>
         </div>
     </div>
 
-
-
-    <script type="text/javascript">
+ <script type="text/javascript">
+        // Получение элементов DOM
         var bookingInfoElement = document.getElementById('bookingInfo');
         var dateHeaderElement = document.getElementById('selectedDateHeader');
         var calendarDateInput = document.getElementById('calendarDateInput');
 
+        // Функция для переключения видимости поля ввода даты
         function toggleDateInput() {
             calendarDateInput.style.display = (calendarDateInput.style.display === 'none') ? 'block' : 'none';
         }
 
+        // Получение данных из localStorage
         const bookingType = localStorage.getItem('bookingType');
         const bookingPrice = localStorage.getItem('bookingPrice');
         const bookingImage = localStorage.getItem('bookingImage');
@@ -216,14 +235,7 @@ body {
         let bookingDate = localStorage.getItem('date');
         const bookingPeopleCount = localStorage.getItem('people');
 
-        console.log('Booking Type:', bookingType);
-        console.log('Booking Price:', bookingPrice);
-        console.log('Booking Image:', bookingImage);
-        console.log('Booking Region:', bookingRegion);
-        console.log('address', bookingName);
-        console.log('Booking Date:', bookingDate);
-        console.log('Booking People Count:', bookingPeopleCount);
-
+        // Вывод информации о бронировании
         if (bookingType && bookingPrice && bookingImage && bookingRegion && bookingName && bookingDate && bookingPeopleCount) {
             bookingInfoElement.innerHTML = '<h2>Информация для бронирования:</h2>';
             bookingInfoElement.innerHTML += '<h3>Регион: ' + bookingRegion + '</h3>';
@@ -237,24 +249,29 @@ body {
             bookingInfoElement.innerHTML = 'Информация для бронирования не найдена.';
         }
 
+        // Функция для обновления выбранной даты
         function updateSelectedDate() {
             var selectedDateInput = document.getElementById('calendarDateInput');
             bookingDate = selectedDateInput.value;
             localStorage.setItem('date', bookingDate);
 
+            // Проверка и вывод даты на странице
             if (bookingDate == null || bookingDate === '') {
                 dateHeaderElement.innerHTML = '';
             } else {
                 document.getElementById('eventDate').innerText = bookingDate;
             }
 
+            // Вызов функции отображения локаций (не реализована в этом фрагменте кода)
             displayLocations();
         }
 
+        // Функция для отображения локаций (пустая, так как не реализована в данном фрагменте)
         function displayLocations() {
             console.log('Отображение локаций');
         }
 
+        // Функция для расчета базовой стоимости
         function calculateBaseCost() {
             var baseCostElement = document.getElementById('baseCost');
 
@@ -265,17 +282,19 @@ body {
             }
         }
 
+        // Функция для расчета общей стоимости
         function calculateTotalCost() {
             var totalCostElement = document.getElementById('totalCost');
 
             if (bookingPeopleCount && bookingPrice) {
                 var additionalServicesCost = calculateAdditionalServicesCost();
-                totalCostElement.innerText = (parseInt(bookingPrice) + additionalServicesCost) + ' ';
+                totalCostElement.innerText = (parseInt(bookingPrice) + additionalServicesCost) + ' руб.';
             } else {
                 alert('Не удалось рассчитать стоимость. Пожалуйста, укажите количество человек и стоимость.');
             }
         }
 
+        // Функция для расчета стоимости дополнительных услуг
         function calculateAdditionalServicesCost() {
             var additionalServicesCost = 0;
 
@@ -284,6 +303,7 @@ body {
             var hostCheckbox = document.getElementById('hostCheckbox');
             var taxiCheckbox = document.getElementById('taxiCheckbox');
 
+            // Проверка каждого чекбокса и добавление стоимости, если услуга выбрана
             if (foodCheckbox.checked) {
                 additionalServicesCost += (parseInt(bookingPeopleCount) * 500);
             }
@@ -293,20 +313,19 @@ body {
             }
 
             if (hostCheckbox.checked) {
-                additionalServicesCost += 2 * 500; 
+                additionalServicesCost += 2 * 500;
             }
 
             if (taxiCheckbox.checked) {
-                additionalServicesCost += 50; // Base cost
-                additionalServicesCost += 10 * 20; // Assuming 20 km distance
+                additionalServicesCost += 50;
+                additionalServicesCost += 10 * 20;
             }
 
             return additionalServicesCost;
         }
 
+        // Функция для оформления бронирования (переход на главную страницу)
         function submitBooking() {
-            
-
             window.location.href = 'index.html';
         }
     </script>
