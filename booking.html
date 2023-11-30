@@ -23,17 +23,17 @@ body {
 #bookingInfo {
     background-color: rgba(255, 255, 255, 1);
     padding: 20px;
-    margin-top: 10%; /* Adjust the margin-top to a percentage that works well for your layout */
+    margin-top: 10%; 
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     text-align: center;
-    max-height: 70%; /* Limit the height of the container to 70% of the viewport height */
-    overflow-y: auto; /* Add a vertical scrollbar if the content overflows */
+    max-height: 70%; 
+    overflow-y: auto; 
 }
         img {
             margin-top: 20px;
-            max-width: 30%; /* Adjust the max-width to make the image smaller */
+            max-width: 30%; 
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -69,7 +69,7 @@ body {
             background-color: #2980b9;
         }
 
-        /* Additional services section styles */
+        
         #additionalServices {
     margin-top: 20px;
     border-top: 1px solid #ddd;
@@ -97,7 +97,7 @@ body {
             color: #555;
         }
 
-        /* Total cost square styles */
+        
         #totalCostSquare {
             background-color: #3498db;
             padding: 20px;
@@ -116,7 +116,7 @@ body {
             font-weight: bold;
         }
 
-        /* Booking buttons styles */
+        
         #bookingButtons {
             margin-top: 20px;
         }
@@ -148,13 +148,13 @@ body {
             background-color: #219a52;
         }
         .serviceCheckbox {
-    /* Remove display: none; to make the checkboxes visible */
+    
 }
     </style>
 </head>
 <body>
     <div id="bookingContainer">
-        <div id="bookingInfo"></div> <!-- New section to display booking information -->
+        <div id="bookingInfo"></div> 
         <h2>Информация для бронирования</h2>
         <div id="selectedDateHeader"></div>
         <button id="changeDateButton" onclick="toggleDateInput()">Изменить дату</button>
@@ -293,7 +293,7 @@ body {
             }
 
             if (hostCheckbox.checked) {
-                additionalServicesCost += 2 * 500; // Assuming 2 hours duration
+                additionalServicesCost += 2 * 500; 
             }
 
             if (taxiCheckbox.checked) {
@@ -305,7 +305,7 @@ body {
         }
 
         function submitBooking() {
-            // Additional logic for submitting booking
+            
 
             window.location.href = 'index.html';
         }
