@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selected Location</title>
     <style>
-/* Подключение шрифта Roboto Medium */
-        @font-face {
+
+   @font-face {
             font-family: 'Roboto Medium';
             src: url('fonts/Roboto-Medium.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
 
-        /* Основные стили для body */
+
         body {
             margin: 0;
             padding: 0;
@@ -25,18 +25,15 @@
             min-height: 100vh;
             background: url('images/people/2.jpg') center/cover no-repeat;
             font-family: 'Roboto Medium', Arial, sans-serif;
+        
         }
 
-        /* Стили для заголовка h1 и абзацев p */
         h1, p {
             font-family: 'Roboto Medium', Arial, sans-serif;
         }
 
-        /* Стили для блока #locations, #selectedDate, #region, #favorites */
-        #locations,
-        #selectedDate,
-        #region,
-        #favorites {
+
+        #locations, #selectedDate, #region, #favorites {
             padding: 20px;
             margin: 10px;
             background-color: white;
@@ -45,14 +42,12 @@
             width: 80%;
         }
 
-        /* Стили для label */
         label {
             display: block;
             margin-bottom: 10px;
             color: #333;
         }
 
-        /* Стили для элементов связанных с датой */
         label[for="calendarDateInput"],
         #calendarDateInput {
             background-color: white;
@@ -62,7 +57,6 @@
             margin-bottom: 10px;
         }
 
-        /* Стили для input[type="date"] */
         input[type="date"] {
             padding: 10px;
             border: 1px solid #ccc;
@@ -70,13 +64,11 @@
             margin-bottom: 10px;
         }
 
-        /* Стили для фотографий в блоке .photo-container */
         .photo-container {
             display: flex;
             align-items: center;
         }
 
-        /* Стили для стрелок и кнопок в блоке .photo-container-inner */
         .photo-container-inner {
             position: relative;
         }
@@ -100,7 +92,6 @@
             right: 10px;
         }
 
-        /* Стили для фотографии */
         .photo {
             width: 100%;
             height: auto;
@@ -108,7 +99,6 @@
             max-height: 400px;
         }
 
-        /* Стили для регионов .KrasnoyarskRegion и .AltaiRegion */
         .KrasnoyarskRegion {
             background-color: lightblue;
         }
@@ -117,14 +107,12 @@
             background-color: lightgreen;
         }
 
-        /* Стили для центрирования .center-both */
         .center-both {
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Стили для кастомной кнопки .custom-button */
         .custom-button {
             padding: 10px 20px;
             border: none;
@@ -135,7 +123,6 @@
             transition: background-color 0.3s;
         }
 
-        /* Стили для кнопки добавления в избранное .add-to-favorites */
         .add-to-favorites {
             background-color: #3498db;
             color: white;
@@ -145,7 +132,6 @@
             background-color: #2980b9;
         }
 
-        /* Стили для кнопки выбора зоны .select-zone */
         .select-zone {
             background-color: #4CAF50;
             color: white;
@@ -162,7 +148,6 @@
             background-color: #45a049;
         }
 
-        /* Стили для кнопки удаления .remove-button */
         .remove-button {
             background: none;
             border: none;
@@ -171,7 +156,6 @@
             cursor: pointer;
         }
 
-        /* Стили для кнопки показа фотографий .show-photos */
         .show-photos {
             background-color: #e74c3c;
             color: white;
@@ -181,15 +165,12 @@
             background-color: #c0392b;
         }
 
-        /* Стили для обертки .photo-wrapper и .prev-button, .next-button */
         .photo-wrapper {
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Стили для кнопок .prev-button, .next-button */
-        .prev-button,
-        .next-button {
+        .prev-button, .next-button {
             background-color: #3498db;
             color: white;
             font-weight: bold;
@@ -201,20 +182,49 @@
             transition: background-color 0.3s;
         }
 
-        .prev-button:hover,
-        .next-button:hover {
+        .prev-button:hover, .next-button:hover {
             background-color: #2980b9;
         }
-    </style>
+
+        .container {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .container li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container li a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+
+</style>
 </head>
 
 <body>
+
+
     <div id="locations"></div>
 
     <label for="calendarDateInput">Выберите дату:</label>
     <input type="date" id="calendarDateInput" onchange="updateSelectedDate()">
 
     <div id="favorites" class="center-both"></div>
+
 <script type="text/javascript">
     // Получение данных из localStorage
     let selectedDate = localStorage.getItem('date');
